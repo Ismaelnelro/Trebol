@@ -1,5 +1,6 @@
 #avatar_perfil {
   width: 8rem;
+  min-width: 8rem;
   border-radius: 100%;
   border: 3px solid black;
   box-shadow: 0.35em 0.20em;
