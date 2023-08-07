@@ -11,6 +11,14 @@
   box-shadow: 0.05em 0.05em;
 }
 
+
+#avatar_perfil  img{
+  width: 8rem;
+  height: 8rem;
+  min-width: 8rem;
+  min-height: 8rem;
+}
+
 /* #avatar_perfil:hover {
   transform: translate(-0.05em, -0.05em);
   box-shadow: 0.25em 0.15em;
