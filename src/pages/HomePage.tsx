@@ -26,7 +26,7 @@ const HomePage = () => {
 
   return (
     <LayoutPage>
-      <div className="flex flex-col justify-center items-center w-full min-h-[350px] h-auto  gap-3">
+      <div className="flex flex-col justify-center items-center w-full min-h-[350px] h-full  gap-3 mb-20">
         {links.map((net, index) => (
           <Trebol key={index} net={net} />
         ))}

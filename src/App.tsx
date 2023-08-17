@@ -9,7 +9,7 @@ function App() {
   const isAuthenticted = true;
 
   return (
-    <div className='bg-blue-400 max-w-[900px] min-w-[320px] m-auto max-h-[1300px] h-screen min-h-[600px] relative'>
+    <div className='bg-blue-500 max-w-[900px] min-w-[320px] m-auto max-h-[1600px]  min-h-[600px] relative'>
       <Routes>
         {isAuthenticted &&
           <Route path='/admin' element={<AdminPage />} />
