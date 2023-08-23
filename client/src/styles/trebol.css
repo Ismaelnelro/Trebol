@@ -1,6 +1,6 @@
 #trebol {
-  width: 90%;
-  min-height: 4.5rem;
+  width: 100%;
+  min-height: 3.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 0.8rem;
