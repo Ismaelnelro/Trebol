@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ActionChangeAvatarProfile, ActionChangeBackgroundColorApp, ActionChangeIconNameUrlLinks, ActionChangeNameProfile } from "./profileActions";
+import { ActionAddNewFieldNetwork, ActionChangeAvatarProfile, ActionChangeBackgroundColorApp, ActionChangeIconNameUrlLinks, ActionChangeNameProfile, ActionDeleteIconNameUrlLinks, ActionEditFieldNetwork, ActionEditIconsFieldNetwork } from "./profileActions";
 
 export interface Network {
-  icon?: string;
-  name?: string;
-  url?: string;
+  icon: string;
+  name: string;
+  url: string;
 }
 
 export interface Styles {
@@ -16,8 +16,8 @@ export interface Styles {
 }
 
 export interface Profile {
-  network?: Network;
-  styles?: Styles;
+  network: Network[];
+  styles: Styles;
 }
 
 export interface profileInitialState {
@@ -27,14 +27,29 @@ export interface profileInitialState {
 
 }
 
-const initialState: profileInitialState = {
-  avatar: '',
-  name: '',
-  profile: {
-    network: {},
-    styles: {}
+const initialStateDB = localStorage.getItem("profile")
+let initialState: profileInitialState;
+if (initialStateDB) {
+  initialState = JSON.parse(initialStateDB);
+} else {
+
+  initialState = {
+    avatar: '1',
+    name: 'TrebolName',
+    profile: {
+      network: [],
+      styles: {
+        backgroundAppColor: '',
+        fontFamilyApp: '',
+        links: {
+          fontSizeText: ''
+        }
+      }
+    }
   }
+
 }
+
 
 
 export const profileSlice = createSlice({
@@ -43,11 +58,16 @@ export const profileSlice = createSlice({
   reducers: {
     onChangeNameProfile: (state, action: PayloadAction<{ name: string }>) => ActionChangeNameProfile(state, action),
     onChangeAvatarProfile: (state, action: PayloadAction<{ avatar: string }>) => ActionChangeAvatarProfile(state, action),
-    onChangeIconNameUrlLinks: (state, action: PayloadAction<Network>) => ActionChangeIconNameUrlLinks(state, action),
+    onChangeIconNameUrlLinks: (state, action: PayloadAction<Network[]>) => ActionChangeIconNameUrlLinks(state, action),
+    onDeleteIconNameUrlLinks: (state, action: PayloadAction<Network[]>) => ActionDeleteIconNameUrlLinks(state, action),
     onChangeBackgroundColorApp: (state, action: PayloadAction<Styles>) => ActionChangeBackgroundColorApp(state, action),
+    onAddNewFieldNetwork: (state, action: PayloadAction<Network>) => ActionAddNewFieldNetwork(state, action),
+    onEditFieldNetwork: (state, action: PayloadAction<Network[]>) => ActionEditFieldNetwork(state, action),
+    onEditIconsFieldsNetwork: (state, action: PayloadAction<Network[]>) => ActionEditIconsFieldNetwork(state, action),
+
   }
 })
 
 
-export const { onChangeBackgroundColorApp, onChangeAvatarProfile, onChangeIconNameUrlLinks, onChangeNameProfile } = profileSlice.actions
+export const { onChangeBackgroundColorApp, onAddNewFieldNetwork, onEditFieldNetwork, onEditIconsFieldsNetwork, onChangeAvatarProfile, onDeleteIconNameUrlLinks, onChangeIconNameUrlLinks, onChangeNameProfile } = profileSlice.actions
 export default profileSlice.reducer
